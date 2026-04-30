@@ -11,6 +11,8 @@ Lock icons (fa-lock, fa-lock-open)
 Color palette array
 Created:
 ticketsArr → main data storage (state)
+
+
 💾 2. Load Data from LocalStorage (Persistence)
 Method:
 if (localStorage.getItem("tickets"))
@@ -21,6 +23,8 @@ Loop through tickets
 Rebuild UI using createTicket()
 
 👉 This ensures data is persistent after refresh
+
+
 
 🧱 3. Ticket Creation System
 (A) addNewTicket()
@@ -45,6 +49,8 @@ Attach functionality:
 delete (handleRemoval)
 lock/edit (handleLock)
 color change (handleColor)
+
+
 🗑️ 4. Delete System (handleRemoval)
 Logic:
 Only works if removeTaskFlag = true
@@ -55,6 +61,8 @@ Remove ticket from DOM
 Find index using getTicketIndex()
 Remove from array
 Update localStorage
+
+
 🔐 5. Lock / Unlock + Edit System (handleLock)
 Steps:
 Select lock icon + task area
@@ -68,6 +76,8 @@ Save to localStorage
 
 👉 Enables inline editing of task
 
+
+
 🎨 6. Color Change System (handleColor)
 Steps:
 Detect color band click
@@ -77,12 +87,16 @@ Move to next color (cyclic)
 Update UI color
 Update ticket object in array
 Save to localStorage
+
+
 ➕ 7. Add Ticket Modal Toggle
 Add button click:
 addTaskFlag = !addTaskFlag;
 Steps:
 Toggle modal visibility:
 show / hide using flex or none
+
+
 🗑️ 8. Remove Mode Toggle
 Remove button click:
 Steps:
@@ -92,6 +106,8 @@ show alert
 change button color red
 If OFF:
 reset color
+
+
 ⌨️ 9. Create Ticket Using SHIFT Key
 Event:
 modalCont.addEventListener("keydown")
@@ -105,6 +121,8 @@ Create ticket using:
 addNewTicket(modalPriorityColor, taskContent);
 Close modal
 Reset textarea
+
+
 🎯 10. Priority Color Selection (Modal)
 Steps:
 Click priority color
@@ -114,6 +132,8 @@ Add active to clicked one
 Store selected color in:
 
 modalPriorityColor
+
+
 🔍 11. Filter Tickets by Color (Toolbox)
 Steps:
 Click toolbox color
@@ -121,14 +141,19 @@ Get selected color
 Loop all tickets
 Compare ticket color
 Show/hide accordingly
+
+
 🔄 12. Reset Filter (Double Click)
 Steps:
 On double click:
 Show all tickets again
+
+
 🧠 13. Utility Functions
 getTicketIndex(id)
 Finds ticket index in array
 updateLocalStorage()
+
 Syncs ticketsArr with localStorage
 🧩 Final Architecture Summary
 
