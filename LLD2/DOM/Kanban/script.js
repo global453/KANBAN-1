@@ -9,13 +9,16 @@ const lockClose = "fa-lock";
 const lockOpen = "fa-lock-open";
 const colors = ["lightpink", "lightgreen", "lightblue", "black"]; // 4 % 4 -> 0
 let ticketsArr = [];
+//iflocal storage contains the ticket
 
 if (localStorage.getItem("tickets")) {
+  //stored the array  in string format, when we are reading back we will be using json.parse
   ticketsArr = JSON.parse(localStorage.getItem("tickets"));
 
   // rebuilding the UI from saved data
   for (let i = 0; i < ticketsArr.length; i++) {
     const { ticketColor, ticketID, ticketTask } = ticketsArr[i];
+    //call our createticket function
     createTicket(ticketColor, ticketID, ticketTask);
   }
 }
@@ -23,6 +26,7 @@ if (localStorage.getItem("tickets")) {
 function addNewTicket(ticketColor, ticketTask) {
   const id = shortid();
   ticketsArr.push({ ticketColor, ticketID: id, ticketTask }); // ES5
+  //this array willl pushing local storage
   localStorage.setItem("tickets", JSON.stringify(ticketsArr));
   createTicket(ticketColor, id, ticketTask);
 }
